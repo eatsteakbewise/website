@@ -23,7 +23,7 @@ var getJSON = function(url, callback) {
 getJSON('https://api.coingecko.com/api/v3/coins/stakewise?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
 	function(err, data) {
 		if (err !== null) {
-				alert('Something went wrong: ' + err);
+				alert('Something went wrong: ' + err.message);
 		} else {
 				current_price_swise = data.market_data.current_price.usd;
 		}
@@ -34,7 +34,7 @@ getJSON('https://api.coingecko.com/api/v3/coins/stakewise?localization=false&tic
 getJSON('https://api.coingecko.com/api/v3/coins/1inch?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
 	function(err, data) {
 		if (err !== null) {
-				alert('Something went wrong: ' + err);
+				alert('Something went wrong: ' + err.message);
 		} else {
 				current_price_1inch = data.market_data.current_price.usd;
 		}
@@ -45,7 +45,7 @@ getJSON('https://api.coingecko.com/api/v3/coins/1inch?localization=false&tickers
 getJSON('https://api.coingecko.com/api/v3/coins/ethereum?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
 	function(err, data) {
 		if (err !== null) {
-				alert('Something went wrong: ' + err);
+				alert('Something went wrong: ' + err.message);
 		} else {
 				current_price_ethereum = data.market_data.current_price.usd;
 		}
