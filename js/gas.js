@@ -3,17 +3,17 @@
 // To Do: Include this right after the HTML table that is used for gas
 //
 
-let wsObj;
-let wsUrl = 'wss://www.gasnow.org/ws';
+var wsObj;
+var wsUrl = 'wss://www.gasnow.org/ws';
 
 // HTML table must have the following ids - rapid, fast, standard and slow
-let rapidObj = document.getElementById('rapid');
-let fastObj = document.getElementById('fast');
-let standardObj = document.getElementById('standard');
-let slowObj = document.getElementById('slow');
+var rapidObj = document.getElementById('rapid');
+var fastObj = document.getElementById('fast');
+var standardObj = document.getElementById('standard');
+var slowObj = document.getElementById('slow');
 
 // Function to update HTML table with new gas prices
-let updatePageGasPriceData = data => {
+var updatePageGasPriceData = data => {
 	console.log(data.gasPrices);
 	if (data && data.gasPrices) {
 		rapidObj.innerHTML = (data.gasPrices.rapid / 1000000000).toFixed(0);

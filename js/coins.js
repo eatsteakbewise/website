@@ -1,8 +1,8 @@
 // Description: Get current crypto prices
 
-let current_price_ethereum = 0;
-let current_price_swise = 0;
-let current_price_1inch = 0;
+var current_price_ethereum = 0;
+var current_price_swise = 0;
+var current_price_1inch = 0;
 
 // Description: Function to parse JSON returned from an URL and store the data
 var getJSON = function(url, callback) {
