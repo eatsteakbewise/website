@@ -28,6 +28,7 @@ getJSON('https://api.coingecko.com/api/v3/coins/stakewise?localization=false&tic
 		} else {
 				current_price_swise = data.market_data.current_price.usd;
 				currprice_swise.innerHTML = current_price_swise;
+				current_price_of_swise.value = current_price_swise;
 		}
 	}
 );
@@ -40,6 +41,7 @@ getJSON('https://api.coingecko.com/api/v3/coins/1inch?localization=false&tickers
 		} else {
 				current_price_1inch = data.market_data.current_price.usd;
 				currprice_1inch.innerHTML = current_price_1inch;
+				current_price_of_1inch.value = current_price_1inch;
 		}
 	}
 );
@@ -52,6 +54,7 @@ getJSON('https://api.coingecko.com/api/v3/coins/ethereum?localization=false&tick
 		} else {
 				current_price_ethereum = data.market_data.current_price.usd;
 				currprice_ethereum.innerHTML = current_price_ethereum;
+				current_price_of_eth.value = current_price_ethereum;
 		}
 	}
 );
