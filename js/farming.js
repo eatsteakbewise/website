@@ -1,21 +1,21 @@
 // Global variables
 alert("Thank you for visiting today!");
 
-let swap_ethereum_swise = 0;
-let swap_ethereum_1inch = 0;
-let amount_swise_invest = 0;
-let amount_1inch_purchase = 0;
-let estimated_apy = 0;
-let days_left_to_farm = 0;
-let total_value_swise = 0;
-let total_cost_1inch = 0;
-let farming_start_date = new Date();
-let farming_end_date = new Date();
-let swise_rewards_earned = 0;
-let fiat_swise_rewards_earned = 0;
-let 1inch_rewards_earned = 0;
-let final_profit = 0;
-let swise_1inch_ratio = 0;
+var swap_ethereum_swise = 0;
+var swap_ethereum_1inch = 0;
+var amount_swise_invest = 0;
+var amount_1inch_purchase = 0;
+var estimated_apy = 0;
+var days_left_to_farm = 0;
+var total_value_swise = 0;
+var total_cost_1inch = 0;
+var farming_start_date = new Date();
+var farming_end_date = new Date();
+var swise_rewards_earned = 0;
+var fiat_swise_rewards_earned = 0;
+var 1inch_rewards_earned = 0;
+var final_profit = 0;
+var swise_1inch_ratio = 0;
 // HTML values
 // currprice_ethereum
 // currprice_swise
@@ -39,7 +39,7 @@ let swise_1inch_ratio = 0;
 		enddate.innerHTML = new Date();
 	};
 
-	// Show Connect wallet coming soon alert
+	// Show Connect walvar coming soon alert
 	function comingSoon() {
 				alert("This feature is coming soon");
 	}
