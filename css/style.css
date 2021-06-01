@@ -1,0 +1,54 @@
+.body-background {
+    background-color: #222a42;
+}
+
+.media {
+    margin-bottom: 0.2rem !important;
+}
+
+.card-content {
+    padding-top: 1rem !important;
+    padding-bottom: 0.2rem !important;
+}
+
+.gas-label {
+    padding-bottom: 0.3rem;
+}
+
+.gas-timestamp {
+    font-size: .70em !important;
+}
+
+.nav-button {
+    display: block ;
+    margin: auto;
+}
+
+.table__wrapper {
+    overflow-x: auto;
+}
+
+.farming-button {
+    margin-bottom: 20px;
+    color: #fff;
+    background: #1d8cf8;
+    background-image: linear-gradient(to bottom left,#1d8cf8,#3358f4,#1d8cf8);
+    background-size: 210% 210%;
+    background-position: 100% 0;
+    background-color: #1d8cf8;
+    transition: all .15s ease;
+    box-shadow: none;
+}
+
+.is-greeting {
+    color: #fff;
+    background: #1d8cf8;
+    background-image: linear-gradient(to bottom left,#1d8cf8,#3358f4,#1d8cf8);
+    background-size: 210% 210%;
+    background-position: 100% 0;
+    background-color: #1d8cf8;
+}
+
+.calculator-input {
+    background-color: #f1f6ff !important;
+}

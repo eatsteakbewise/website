@@ -1,3 +1,600 @@
-Home File
-Touch
-Another test.
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SWISE Farming Calculator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/modal.js"></script>
+	<script src="js/counter.js"></script>
+	<script src="js/notifications.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<!-- Bulma Version 0.9.0-->
+	<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+	<link rel="icon" type="image/png" href="img/favicon.png"/>
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NYGPTYH73W"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-NYGPTYH73W');
+	</script>
+		<script>
+			// Global variables
+			let current_price_ethereum = 0;
+			let current_price_swise = 0;
+			let current_price_1inch = 0;
+			let swap_ethereum_swise = 0;
+			let swap_ethereum_1inch = 0;
+			let amount_swise_invest = 0;
+			let amount_1inch_purchase = 0;
+			let estimated_apy = 0;
+			let days_left_to_farm = 0;
+			let total_value_swise = 0;
+			let total_cost_1inch = 0;
+			let farming_start_date = new Date();
+			let farming_end_date = new Date();
+			let swise_rewards_earned = 0;
+			let fiat_swise_rewards_earned = 0;
+			let 1inch_rewards_earned = 0;
+			let final_profit = 0;
+			let swise_1inch_ratio = 0;
+			// HTML values
+			// currprice_ethereum
+			// currprice_swise
+			// currprice_1inch
+			// startdate
+			// enddate
+			// amount_swise
+			// purchase_1inch
+			// apy
+			// final_profit
+			// swiseaward
+			// swiseawardfiat
+			// daysleft
+			// value_swise
+			// cost_1inch
+	</script>
+</head>
+
+<body>
+	<!-- START NAV -->
+	<nav class="navbar is-white">
+		<div class="container">
+			<div class="navbar-brand">
+				<a class="navbar-item brand-text" href="https://stakewise.io/">
+					<b>SWISE Farm Calculator V2</b>
+				</a>
+				<div class="navbar-burger burger" data-target="navMenu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+			<div id="navMenu" class="navbar-menu">
+				<div class="navbar-end">
+					<button class="button is-rounded nav-button" onclick="refs.modalabout.open()">
+						<span>How to use?</span>
+					</button>
+					<a class="navbar-item control" href="">
+						<a class="bd-tw-button button is-rounded nav-button" onClick="comingSoon()">
+							Connect Wallet
+						</a>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- END NAV -->
+
+	<br />
+
+	<div class="container">
+		<div class="columns">
+			<div class="column is-3 ">
+				<!-- Calculator Card SWISE -->
+				<aside class="menu">
+					<div class="card">
+						<!-- SWISE Amount -->
+						<div class="card-content">
+							<div class="media">
+								<div class="media-content">
+									<p class="menu-label">Amount of SWISE Investing</p>
+								</div>
+							</div>
+							<div class="content">
+								<input class="input is-rounded calculator-input" id="amount_swise" type="text" placeholder="500">
+							</div>
+						</div>
+
+						<!-- Swap ETH to SWISE -->
+						<div class="card-content">
+							<div class="media">
+								<div class="media-content">
+									<p class="menu-label">SWAP ETH to SWISE PRICE</p>
+								</div>
+							</div>
+							<div class="content">
+								<input class="input is-rounded calculator-input" id="swap_swise" onfocus="this.value=''" type="text"
+									placeholder="LP Costs (USD)">
+							</div>
+						</div>
+
+						<!-- Swap ETH to 1Inch -->
+						<div class="card-content">
+							<div class="media">
+								<div class="media-content">
+									<p class="menu-label">SWAP ETH to 1inch PRICE</p>
+								</div>
+							</div>
+							<div class="content">
+								<input class="input is-rounded calculator-input" id="swap_1inch" type="text" onfocus="this.value=''"
+									placeholder="LP Costs (USD)">
+							</div>
+						</div>
+
+						<!-- Estimated APY -->
+						<div class="card-content">
+							<div class="media">
+								<div class="media-content">
+									<p class="menu-label">Estimated Actual APY (%)</p>
+								</div>
+							</div>
+							<div class="content">
+								<input class="input is-rounded calculator-input" id="apy" type="text" onfocus="this.value=''" placeholder="APY (%)">
+							</div>
+						</div>
+
+						<!-- Days left to farm -->
+						<div class="card-content">
+							<div class="media">
+								<div class="media-content">
+									<p class="menu-label">Days left to farm</p>
+								</div>
+							</div>
+							<div class="content">
+								<input class="input is-rounded calculator-input" id="days" type="text" onfocus="this.value=''" placeholder="30">
+							</div>
+						</div>
+
+						<!-- Button -->
+						<div class="card-content">
+							<div class="content">
+								<input type="button" value="Calculate Farming Gains!" class="button is-link is-rounded farming-button"
+									onClick="showCalculation(), runAnimations()">
+							</div>
+						</div>
+					</div>
+					<br />
+
+					<!-- Gas Fee Card -->
+					<div class="card">
+						<div class="card-content">
+							<div class="media">
+								<div class="media-content">
+									<p class="menu-label gas-label" data-tooltip="Tooltip Text">Current Gas Fees <br /> <span
+											class="gas-timestamp"> Last Updated : <span id="timestamp">Just Now</span></span></p>
+								</div>
+							</div>
+							<div class="content">
+								<div class="columns">
+									<div class="column is-10">
+										<row>
+											<p>Rapid</p>
+										</row>
+										<row>
+											<p>Fast</p>
+										</row>
+										<row>
+											<p>Standard</p>
+										</row>
+										<row>
+											<p>Slow</p>
+										</row>
+									</div>
+									<div class="column is-2">
+										<row>
+											<p id="rapid"></p>
+										</row>
+										<row>
+											<p id="fast"></p>
+										</row>
+										<row>
+											<p id="standard"></p>
+										</row>
+										<row>
+											<p id="slow"></p>
+										</row>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br />
+					</div>
+
+					<p class="menu-label">
+						Made with ♥ by ShornEvans, Quick and brianchilders for the StakeWise community. <br />Eat Steak, be Wise.
+					</p>
+
+				</aside>
+			</div>
+
+			<div class="column is-9">
+				<div class="notification is-greeting" id="notification">
+					<button class="delete" onclick="removeNotification()"></button>
+					<div class="container">
+						<h1 class="title">
+							Hello, SWISE lord.
+						</h1>
+						<h2 class="subtitle">
+							We hope you are having a great day!
+						</h2>
+					</div>
+				</div>
+
+				<section class="info-tiles">
+					<div class="tile is-ancestor has-text-centered">
+						<div class="tile is-parent">
+							<article class="tile is-child box">
+								<p class="title countup" id="finalprofitheader">0</p>
+								<p class="subtitle">Final Profit</p>
+							</article>
+						</div>
+						<div class="tile is-parent">
+							<article class="tile is-child box">
+								<p class="title countup" id="swiseheadercard">0</p>
+								<p class="subtitle">SWISE Rewards</p>
+							</article>
+						</div>
+						<!-- <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="title" id="">N/A</p>
+                                <p class="subtitle">1Inch Rewards</p>
+                            </article>
+                        </div> -->
+						<!-- <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="title" id="farmingheadercard">0</p>
+                                <p class="subtitle">Days Remaining</p>
+                            </article>
+                        </div> -->
+					</div>
+				</section>
+				<div class="columns">
+					<div class="column is-12">
+						<div class="card events-card table__wrapper">
+							<header class="card-header">
+								<p class="card-header-title">
+									Calculation Summary
+								</p>
+							</header>
+							<div class="card-table">
+								<div class="content">
+									<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth'">
+										<tr>
+											<td>Current Price of ETH (USD)</td>
+											<td id="currprice_ethereum"></td>
+											<td>&nbsp;</td>
+											<td>Days Left To Farm</td>
+											<td id="dayslefttofarm"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Current Price of SWISE (USD)</td>
+											<td id="currprice_swise"></td>
+											<td></td>
+											<td>Total Value of SWISE</td>
+											<td id="value_swise"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>Current Price of 1inch (USD)</td>
+											<td id="currprice_1inch"></td>
+											<td></td>
+											<td>Total Cost of 1inch</td>
+											<td id="cost_1inch"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&nbsp;&nbsp;<br />&nbsp;&nbsp;</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>SWAP ETH to SWISE PRICE / LP Costs (USD)</td>
+											<td id="ethtoswiseprice"></td>
+											<td></td>
+											<td>Farming Start Date (TODAY)</td>
+											<td id="startdate"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>SWAP ETH to 1inch PRICE / LP Costs (USD)</td>
+											<td id="ethtooneinchprice"></td>
+											<td></td>
+											<td>Farming End Date</td>
+											<td id="enddate"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&nbsp;&nbsp;<br />&nbsp;&nbsp;</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>PRINCIPAL * ( (APY% / 100) / 365) * DAYS</td>
+											<td>Unit</td>
+											<td>Fiat</td>
+										</tr>
+										<tr>
+											<td>Amount of SWISE investing</td>
+											<td id="swiseamount" </td>
+											<td></td>
+											<td>SWISE Rewards Earned</td>
+											<td id="swiseaward"></td>
+											<td id="swiseawardfiat"></td>
+										</tr>
+										<tr>
+											<td>Amount of 1inch need to purchase</td>
+											<td id="purchase_1inch"></td>
+											<td></td>
+											<td>1inch Rewards Earned</td>
+											<td>N/A</td>
+											<td>N/A</td>
+										</tr>
+										<tr>
+											<td>Estimated Actual APY (%)</td>
+											<td id="apypercent" value="30"></td>
+											<td></td>
+											<td colspan=2>Final Profit (Assumes selling 1inch at current price and keeping SWISE)</td>
+											<td id="finalprofitrealized"></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<footer class="card-footer">
+
+							</footer>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ABOUT MODAL -->
+
+	<div class="modal" id="modalabout">
+		<div onclick="refs.modalabout.close()" class="modal-background"></div>
+		<div class="modal-content">
+			<header class="modal-card-head">
+				<p class="modal-card-title">What this worksheet does:</p>
+			</header>
+			<section class="modal-card-body">
+				<colum class="column">
+					<ol>
+						<li>The worksheet goes out to coingecko.com and fetches the latest prices for ETH, SWISE and 1inch.</li>
+						<li>The worksheet expects the user to put in a value for "Amount of SWISE investing".</li>
+						<li>The worksheet expects the user to put in "Estimated Actual APY (%)" (in percent).</li>
+						<li>The worksheet expects the user to put in "Days Left To Farm".</li>
+						<li>Then press the "Calculate farming Gains!" button.</li>
+						<li>The worksheet will calculate the amount of 1inch that will need to be purchased to maintain a 1:1 parity
+							in USD and display that in the "Amount of 1inch need to purchase" field.</li>
+						<li>The worksheet will calculate the fiat value of SWISE and 1inch (in USD).</li>
+						<li>Given the formula PRINCIPAL * ((APY %/ 100) / 365) * DAYS, it calculates the potential SWISE Rewards
+							Earned and the corresponding Fiat Value.</li>
+						<li>The cost of doing the LP is deducted from the earned SWISE Fiat value. This is "net profit realized". It
+							is assumed that the 1inch that was bought will also be sold, as it will not be possible to earn 1inch
+							rewards, and sold for at least the same price it was bought for. In order to even "make a profit", the
+							1inch tokens need to be sold.</li>
+					</ol>
+				</colum>
+			</section>
+		</div>
+		<button onclick="refs.modalabout.close()" class="modal-close is-large" aria-label="close"></button>
+	</div>
+
+	<!-- END ABOUT MODAL -->
+	<script>
+			let wsObj;
+			let wsUrl = 'wss://www.gasnow.org/ws';
+			let rapidObj = document.getElementById('rapid');
+			let fastObj = document.getElementById('fast');
+			let standardObj = document.getElementById('standard');
+			let slowObj = document.getElementById('slow');
+			// Update HTML with new gas prices
+	let updatePageGasPriceData = data => {
+				console.log(data.gasPrices);
+		if (data && data.gasPrices) {
+				rapidObj.innerHTML = (data.gasPrices.rapid / 1000000000).toFixed(0);
+			fastObj.innerHTML = (data.gasPrices.fast / 1000000000).toFixed(0);
+			standardObj.innerHTML = (data.gasPrices.standard / 1000000000).toFixed(0);
+			slowObj.innerHTML = (data.gasPrices.slow / 1000000000).toFixed(0);
+		}
+	};
+	// open websocket connection
+	wsObj = new WebSocket(wsUrl);
+	wsObj.onopen = evt => {
+				console.log("Connection opened.");
+	};
+	// handle the event
+	wsObj.onmessage = evt => {
+		const dataStr = evt.data;
+		const data = JSON.parse(dataStr);
+		// if we have data, update the page
+		if (data.type) {
+				updatePageGasPriceData(data.data);
+		}
+	};
+	// handle the close event
+	wsObj.onclose = evt => {
+				console.log("Connection closed.");
+	};
+
+	// create function to parse json from a URL and store data
+	var getJSON = function(url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', url, true);
+			xhr.responseType = 'json';
+			xhr.onload = function() {
+				var status = xhr.status;
+				if (status === 200) {
+				callback(null, xhr.response);
+				} else {
+				callback(status, xhr.response);
+				}
+			};
+			xhr.send();
+	};
+
+	// Get Stakewise data
+	getJSON('https://api.coingecko.com/api/v3/coins/stakewise?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
+	function(err, data) {
+		if (err !== null) {
+				alert('Something went wrong: ' + err);
+		} else {
+				current_price_swise = data.market_data.current_price.usd;
+			currprice_swise.innerHTML = current_price_swise;
+		}
+	});
+
+	// Get 1 inch data
+	getJSON('https://api.coingecko.com/api/v3/coins/1inch?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
+	function(err, data) {
+		if (err !== null) {
+				alert('Something went wrong: ' + err);
+		} else {
+				current_price_1inch = data.market_data.current_price.usd;
+			currprice_1inch.innerHTML = current_price_1inch;
+		}
+	});
+
+	// Get Ethereum data
+	getJSON('https://api.coingecko.com/api/v3/coins/ethereum?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
+	function(err, data) {
+		if (err !== null) {
+				alert('Something went wrong: ' + err);
+		} else {
+				current_price_ethereum = data.market_data.current_price.usd;
+			currprice_ethereum.innerHTML = current_price_ethereum;
+		}
+	});
+
+	// Set startdate and enddate on page load
+	window.onload = function() {
+				startdate.innerHTML = new Date();
+		enddate.innerHTML = new Date();
+	};
+
+	// Show Connect wallet coming soon alert
+	function comingSoon() {
+				alert("This feature is coming soon");
+	}
+
+	function showCalculation() {
+				//set days left to farm
+				days_left_to_farm = days.value;
+
+		// Set apy %
+		apy_percent = apy.value;
+		
+		// Set eth 1inch swap price
+		eth_to_oneinch_price = swap_1inch.value;
+		
+		// Set eth to swise swap price
+		eth_to_swise_price = swap_swise.value;
+		
+		// Set swise amount investing
+		swise_amount = amount_swise.value;
+		
+		// Calculate ratio
+		swise_1inch_ratio = current_price_1inch / current_price_swise;
+	
+		// Determine how much 1inch to purchase
+		amount_1inch_purchase = amount_swise.value / swise_1inch_ratio;
+	
+		// Update display
+		purchase_1inch.innerHTML = amount_1inch_purchase;
+	
+		// Calculate fiat (USD) value of SWISE and (USD) purchase of 1inch
+		total_value_swise = current_price_swise * amount_swise.value;
+		total_cost_1inch = current_price_1inch * amount_1inch_purchase;
+	
+		// Update display for crypto dollar values
+		value_swise.innerHTML = total_value_swise;
+		cost_1inch.innerHTML = total_cost_1inch;
+	
+		// Update display
+		startdate.innerHTML = new Date();
+		enddate.innerHTML = new Date();
+	
+		// Calculate rewards earned
+		swise_rewards_earned = amount_swise.value * ((apy.value / 100) / 365) * days.value; 	
+		// Convert to fiat
+		fiat_swise_rewards_earned = swise_rewards_earned * current_price_swise;
+	
+		// Update display
+		swiseaward.innerHTML = swise_rewards_earned;
+		swiseheadercard.innerHTML = swise_rewards_earned
+		swiseamount.innerHTML = swise_amount;
+		swiseawardfiat.innerHTML = fiat_swise_rewards_earned;
+		ethtoswiseprice.innerHTML = eth_to_swise_price;
+		ethtooneinchprice.innerHTML = eth_to_oneinch_price;
+		apypercent.innerHTML = apy_percent;
+		dayslefttofarm.innerHTML = days_left_to_farm;
+		// farmingheadercard.innerHTML = days_left_to_farm;
+	
+		// Compute profit / loss
+		finalprofit = fiat_swise_rewards_earned - swap_swise.value - swap_1inch.value;	
+		finalprofitrealized.innerHTML = finalprofit;
+		finalprofitheader.innerHTML = finalprofit;
+	};
+	</script>
+	<script>
+		document.onload = checkStorage();
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+
+			// Get all "navbar-burger" elements
+			const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+			// Check if there are any navbar burgers
+			if ($navbarBurgers.length > 0) {
+
+				// Add a click event on each of them
+				$navbarBurgers.forEach(el => {
+					el.addEventListener('click', () => {
+
+						// Get the target from the "data-target" attribute
+						const target = el.dataset.target;
+						const $target = document.getElementById(target);
+
+						// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+						el.classList.toggle('is-active');
+						$target.classList.toggle('is-active');
+
+					});
+				});
+			}
+
+			});
+	</script>
+</body>
+
+</html>
