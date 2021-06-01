@@ -10,7 +10,7 @@ var getJSON = function(url, callback) {
 	xhr.open('GET', url, true);
 	xhr.responseType = 'json';
 	xhr.onload = function() {
-		alert(status);
+		var status = xhr.status;
 		if (status === 200) {
 			callback(null, xhr.response);
 		} else {
