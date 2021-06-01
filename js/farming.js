@@ -1,4 +1,6 @@
 // Global variables
+alert("Thank you for visiting today!");
+
 let current_price_ethereum = 0;
 let current_price_swise = 0;
 let current_price_1inch = 0;
