@@ -186,4 +186,4 @@ wsObj.onclose = evt => {
 		finalprofit = fiat_swise_rewards_earned - swap_swise.value - swap_1inch.value;	
 		finalprofitrealized.innerHTML = finalprofit;
 		finalprofitheader.innerHTML = finalprofit;
-	};
+};
