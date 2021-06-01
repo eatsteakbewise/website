@@ -1,0 +1,53 @@
+// Description: Get current crypto prices
+
+let current_price_ethereum = 0;
+let current_price_swise = 0;
+let current_price_1inch = 0;
+
+// Description: Function to parse JSON returned from an URL and store the data
+var getJSON = function(url, callback) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', url, true);
+	xhr.responseType = 'json';
+	xhr.onload = function() {
+		if (status === 200) {
+			callback(null, xhr.response);
+		} else {
+			callback(status, xhr.response);
+		}
+	};
+	xhr.send();
+};
+
+// Get Stakewise data
+getJSON('https://api.coingecko.com/api/v3/coins/stakewise?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
+	function(err, data) {
+		if (err !== null) {
+				alert('Something went wrong: ' + err);
+		} else {
+				current_price_swise = data.market_data.current_price.usd;
+		}
+	}
+);
+
+// Get 1 inch data
+getJSON('https://api.coingecko.com/api/v3/coins/1inch?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
+	function(err, data) {
+		if (err !== null) {
+				alert('Something went wrong: ' + err);
+		} else {
+				current_price_1inch = data.market_data.current_price.usd;
+		}
+	}
+);
+
+// Get Ethereum data
+getJSON('https://api.coingecko.com/api/v3/coins/ethereum?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=true',
+	function(err, data) {
+		if (err !== null) {
+				alert('Something went wrong: ' + err);
+		} else {
+				current_price_ethereum = data.market_data.current_price.usd;
+		}
+	}
+);
