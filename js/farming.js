@@ -45,4 +45,7 @@ function showCalculation() {
 	purchase_1inch.innerHTML = amount_1inch_purchase;
 	apypercent.innerHTML = apy.value;
 	finalprofitrealized.innerHTML = finalprofit;
+	// update header
+	finalprofitheader.innerHTML = finalprofit;
+	swiseheadercard.innerHTML = swise_rewards_earned;
 };
