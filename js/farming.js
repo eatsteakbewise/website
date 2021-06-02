@@ -1,6 +1,6 @@
 // Global variables
 var amount_1inch_purchase = 0;
-kvar total_value_swise = 0;
+var total_value_swise = 0;
 var total_cost_1inch = 0;
 var farming_start_date = new Date();
 var farming_end_date = new Date();
