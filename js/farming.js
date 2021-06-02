@@ -35,6 +35,8 @@ function showCalculation() {
 	dayslefttofarm.innerHTML = days.value;
 	currprice_swise.innerHTML = current_price_of_swise.value;
 	currprice_1inch.innerHTML = current_price_of_1inch.value;
+	value_swise.innerHTML = total_value_swise;
+	cost_1inch.innerHTML = total_cost_1inch;
 	ethtoswiseprice.innerHTML = swap_swise.value;
 	ethtooneinchprice.innerHTML = swap_1inch.value;
 	swiseamount.innerHTML = amount_swise.value;
