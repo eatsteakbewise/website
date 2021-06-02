@@ -38,10 +38,8 @@ var swise_1inch_ratio = 0;
 
 
 function showCalculation() {
-	alert("Found function");
 	// Set swise amount investing
 	swise_amount = amount_swise.value;
-	alert(swise_amount);
 
 	//set days left to farm
 	days_left_to_farm = days.value;
