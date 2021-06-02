@@ -16,7 +16,7 @@ var farming_start_date = new Date();
 var farming_end_date = new Date();
 var swise_rewards_earned = 0;
 var fiat_swise_rewards_earned = 0;
-var 1inch_rewards_earned = 0;
+var oneinch_rewards_earned = 0;
 var final_profit = 0;
 var swise_1inch_ratio = 0;
 
