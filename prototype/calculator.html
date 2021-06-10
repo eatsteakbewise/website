@@ -9,16 +9,18 @@
 <body>
 
 <div class="hero wrapper is-fullheight">
-	<section class="section content columns is-centered">
+	<section class="section content columns is-vcentered">
 		
 		<!-- Start Column 1 -->
-		<div class="column is-one-third">
-			<h1>Stuff here</h1>
+		<div class="column is-one-third has-text-white">
+			<h1 class="rewards has-text-white">So, how do you like your Stake?</h1>
+			<p>By depositing ETH into Stakewise, you will participate in Ethereum 2.0’s proof-of-stake consensus mechanism (Staking) and receive ETH Rewards in Return</p>
+			<button>Start Staking</button>
 		</div>
 		<!-- End Column 1 -->
 
 		<!-- Start Column 2 -->
-		<div class="column is-one-third">
+		<div class="column is-one-third float-column-right">
 			<div class="card">
 				<div class="card-content">
 					<div class="content">
@@ -67,48 +69,36 @@
 <!-- End Column 2 -->
 
 <!-- Start Column 3 -->
-			<div class="column is-one-third">
-				<div class="card">
+			<div class="column is-one-third float-column-left">
+				<div class="card final-card">
 					<div class="card-content">
 						<div class="content">
 							<div class="">
-								<p class="help btnValidation">Ether Amount</p>
 								<div class="field has-addons">
 									<div class="control in">
-										<input class="input" type="text" id="weightInput" placeholder="0"
-											onkeypress="return validate_keydown(event,this)">
+										<p class="rewards has-text-white">0</p>
 									</div>
 								</div>
 							</div>
-							<div class="calculator__row">
-								<input type="range" min="0" max="100" value="0" step="1" class="calculator__tip" id="tip" required/>
-							</div>
+							<p class="help btnVal idation has-text-white">Staking Rewards per Year</p>
 	
 							<div class="">
-								<p class="help btnValidation">Staking Period</p>
 								<div class="field has-addons">
 									<div class="control in">
-										<input class="input" type="text" id="weightInput" placeholder="0"
-											onkeypress="return validate_keydown(event,this)">
+										<p class="rewards has-text-white">0</p>
 									</div>
 								</div>
 							</div>
-							<div class="calculator__row">
-								<input type="range" min="0" max="100" value="0" step="1" class="calculator__tip" id="tip" required/>
-							</div>
+							<p class="help btnValidation has-text-white">Total rETH2 Earnings</p>
 	
 							<div class="">
-								<p class="help btnValidation">APR</p>
 								<div class="field has-addons">
 									<div class="control in">
-										<input class="input" type="text" id="weightInput" placeholder="0"
-											onkeypress="return validate_keydown(event,this)">
+										<p class="rewards has-text-white">0</p>
 									</div>
 								</div>
 							</div>
-							<div class="calculator__row">
-								<input type="range" min="0" max="100" value="0" step="1" class="calculator__tip" id="tip" required/>
-							</div>		
+								<p class="help btnValidation has-text-white">Total Staking Rewards over 24 Months</p>
 							</div>
 						</div>
 					</div>

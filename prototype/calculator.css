@@ -1,3 +1,15 @@
+.rewards {
+    font-size: 4em;
+}
+
+.float-column-left {
+    margin-left: -30px !important;
+}
+
+.float-column-right {
+    margin-right: -10px !important;
+}
+
 .calculator__row {
     display: flex;
     justify-content: space-between;
@@ -26,7 +38,6 @@
     text-transform: capitalize;
     margin: 0;
 }
-
 
 .wrapper {
     background-color: #1E1E2F;
@@ -66,8 +77,10 @@
     font-size: 1em;
 }
 
-.red {
-    color: hsl(348, 100%, 61%);
+.final-card {
+    background-color: #237EF7 !important;
+    min-height: 400px;
+    align: vertical-center;
 }
 
 @media only screen and (max-width: 400px) {
