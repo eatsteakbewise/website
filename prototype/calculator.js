@@ -1,4 +1,4 @@
-i$(document).ready( function () {
+$(document).ready( function () {
 
 
     // VARIABLES
